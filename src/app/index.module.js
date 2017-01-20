@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('ptWeb', ['ui.router']);
+    .module('ptWeb', ['ngAnimate', 'ui.router']);
 
 })();
