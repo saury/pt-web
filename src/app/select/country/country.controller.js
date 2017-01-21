@@ -9,7 +9,7 @@
     function CountryController($log, $state){
         var vm = this;
         
-        vm.selectCountry = function(region) {
+        vm.selectCountry = function() {
             $state.go('select.role');
         }
 

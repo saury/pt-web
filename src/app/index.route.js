@@ -6,7 +6,7 @@
     .config(routerConfig);
 
   /** @ngInject */
-  function routerConfig($stateProvider, $urlRouterProvider) {
+  function routerConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
       .state('main', {
         url: '/',
@@ -18,6 +18,7 @@
       // select country and user role
       .state('select', {
         url: '/select',
+        abstract: true,
         templateUrl: 'app/select/select.html',
         controller: 'SelectController',
         controllerAs: 'select'
@@ -37,6 +38,7 @@
       ;
 
     $urlRouterProvider.otherwise('/');
+    $locationProvider.html5Mode(true);
   }
 
 })();

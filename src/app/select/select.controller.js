@@ -6,12 +6,11 @@
     .controller('SelectController', SelectController);
 
   /** @ngInject */
-  function SelectController($timeout, $state) {
+  function SelectController($log, $interval) {
       var vm = this;
-      vm.leftorright = false;
-
-      setTimeout(function(){
-        $state.transitionTo('select.country');
-      }, 0)
+      
+      // $interval(function(){
+      //   $log.debug('select ctrl');
+      // }, 3000, false)
   }
 })();

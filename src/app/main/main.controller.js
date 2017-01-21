@@ -8,9 +8,9 @@
   /** @ngInject */
   function MainController($timeout, $state) {
       var vm = this;
-      vm.leftorright = true
-      setTimeout(function(){
-        $state.go('select');
-      }, 1000)
+      
+      $timeout(function(){
+        $state.transitionTo('select.country');
+      }, 3000, false)
   }
 })();
