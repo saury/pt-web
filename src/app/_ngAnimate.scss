@@ -5,8 +5,8 @@
 /* ------------------------------------------- */
 
 @mixin transitionDuration ($duration) {
-  // transition-duration: 15000ms;
-  transition-duration: $duration;
+  transition-duration: 5000ms;
+  // transition-duration: $duration;
 }
 
 @mixin easingTimingFunction () {

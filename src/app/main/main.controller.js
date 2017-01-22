@@ -6,11 +6,23 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, $state) {
+  function MainController($log, $timeout, $rootScope, $state) {
       var vm = this;
-      
-      $timeout(function(){
-        $state.transitionTo('select.country');
-      }, 3000, false)
+
+      $log.debug($rootScope.login)
+      // redirect(false);
+
+      // function redirect(login){
+        if(!$rootScope.login){
+          $timeout(function(){
+            $state.go('login');
+          }, 3000, false)
+        }
+        else{
+          $timeout(function(){
+            $state.go('student');
+          }, 3000, false)
+        }
+      // }
   }
 })();

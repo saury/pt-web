@@ -6,16 +6,12 @@
         .controller('CountryController', CountryController)
 
     /** @ngInject */
-    function CountryController($log, $state){
+    function CountryController($log, $scope){
         var vm = this;
         
-        vm.selectCountry = function() {
-            $state.go('select.role');
-        }
-
-        init();
-
-        function init(){
+        vm.selectCountry = function(country) {
+            $scope.login.select.country = country;
+            $scope.$emit('selectionChanges');
         }
 
     }

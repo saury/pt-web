@@ -15,29 +15,45 @@
         controllerAs: 'main'
       })
 
-      // select country and user role
-      .state('select', {
-        url: '/select',
-        abstract: true,
-        templateUrl: 'app/select/select.html',
-        controller: 'SelectController',
-        controllerAs: 'select'
+      // login flow
+      .state('login', {
+        url: '/login',
+        templateUrl: 'app/login/login.html',
+        controller: 'LoginController',
+        controllerAs: 'login'
       })
-      .state('select.country', {
-        url: '/country',
-        templateUrl: 'app/select/country/country.html',
+      .state('login.country', {
+        templateUrl: 'app/login/country/country.html',
         controller: 'CountryController',
         controllerAs: 'country'
       })
-      .state('select.role', {
-        url: '/role',
-        templateUrl: 'app/select/role/role.html',
+      .state('login.school', {
+        templateUrl: 'app/login/school/school.html',
+        controller: 'SchoolController',
+        controllerAs: 'school'
+      })
+      .state('login.role', {
+        templateUrl: 'app/login/role/role.html',
         controller: 'RoleController',
         controllerAs: 'role'
       })
+      .state('login.user', {
+        templateUrl: 'app/login/user/user.html',
+        controller: 'UserController',
+        controllerAs: 'user'
+      })
+      
+      // student flow
+      .state('student', {
+        url: '/student',
+        templateUrl: 'app/student/student.html',
+        controller: 'StudentController',
+        controllerAs: 'student'
+      })
       ;
-
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider
+      // .when('/login', '/login/country')
+      .otherwise('/');
     $locationProvider.html5Mode(true);
   }
 
