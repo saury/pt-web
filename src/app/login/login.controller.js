@@ -14,8 +14,7 @@
         'role',
         'user'
       ],
-      currentPostion,
-      initTimer;
+      currentStep = 0;
 
     // selected info, default val all undefined
     vm.select = {
@@ -25,46 +24,53 @@
       user: void 0
     }
 
-    initTimer = $timeout(function () {
+    var initTimer = $timeout(function () {
+      // locate the step
+      for (var i = 0, len = queue.length; i < len; i++) {
+        // if the info's empty mark it as current step
+        if (!vm.select[queue[i]]) {
+          currentStep = i;
+          break;
+        }
+      }
       // render for the 1st time
-      render();
+      $log.warn(currentStep)
+      render(currentStep);
       addListener();
     }, 0, false)
 
     /**
      * Render the login page according to the user's selected infos
+     * @param {number} step
      */
-    function render() {
-      for (var i = 0, len = queue.length; i < len; i++) {
-        if (!vm.select[queue[i]]) {
+    function render(step) {
+        if (step !== 4) {
           vm.forward = true;
-          $state.go('login.' + queue[i]);
-          // save the position in order to go back manually
-          currentPostion = i;
-          break;
+          $state.go('login.' + queue[step]);
         }
-        if (i === 3) {
+        else {
           $log.debug('go to main')
           $rootScope.login = true;
           $state.go('main');
         }
-      }
     }
 
     function addListener() {
       // prevent go back to path '/' directly
-      $scope.$on('$locationChangeStart', function (event, toUrl) {
-        if (!(currentPostion === 3 || currentPostion === 0)) {
-          event.preventDefault()
-          $log.debug(toUrl);
+      $scope.$on('$locationChangeStart', function (evt) {
+        if (!(currentStep === 4 || currentStep === 0)) {
+          evt.preventDefault()
           vm.forward = false;
-          currentPostion -= 1;
-          $state.go('login.' + queue[currentPostion]);
+          currentStep -= 1;
+          $state.go('login.' + queue[currentStep]);
         }
       });
       // watch the user selection and rerender the page
       $scope.$on('selectionChanges', function () {
-        render();
+        // save the position in order to go back manually
+        currentStep++;
+        $log.log(currentStep)
+        render(currentStep);
       });
     }
 

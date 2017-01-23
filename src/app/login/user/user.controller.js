@@ -13,10 +13,6 @@
             $scope.login.select.user = user;
             $scope.$emit('selectionChanges');
         }
-
-        $log.debug($scope.login)
-        $log.debug('user ctrl')
-
     }
 
 }());

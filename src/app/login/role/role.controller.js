@@ -16,9 +16,5 @@
             $scope.$emit('selectionChanges');
         }
 
-        $log.debug($scope.login)
-        $log.debug('role ctrl')
-
     }
-
 }());
