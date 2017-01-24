@@ -6,9 +6,10 @@
         .controller('StudentController', StudentController)
 
     /** @ngInject */
-    function StudentController($log){
+    function StudentController($log, $state){
         var vm = this;
         $log.debug('landing student page')
+        $state.go('student.mentor')
     }
 
 }());

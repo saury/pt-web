@@ -33,6 +33,24 @@
         controller: 'StudentConfirmController',
         controllerAs: 'confirm'
       })
+      .state('student.sound', {
+        // url: '',
+        templateUrl: 'app/student/sound/sound.html',
+        controller: 'StudentSoundController',
+        controllerAs: 'sound'
+      })
+      .state('student.test', {
+        // url: '',
+        templateUrl: 'app/student/test/test.html',
+        controller: 'StudentTestController',
+        controllerAs: 'test'
+      })
+      .state('student.finish', {
+        // url: '',
+        templateUrl: 'app/student/finish/finish.html',
+        controller: 'StudentfinishController',
+        controllerAs: 'finish'
+      })
       ;
   }
 
