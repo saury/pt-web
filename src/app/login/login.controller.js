@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('ptWeb')
+    .module('ptWeb.login')
     .controller('LoginController', LoginController);
 
   /** @ngInject */

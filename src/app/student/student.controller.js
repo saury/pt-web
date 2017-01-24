@@ -2,13 +2,13 @@
     'use strict';
 
     angular
-        .module('ptWeb')
+        .module('ptWeb.student')
         .controller('StudentController', StudentController)
 
     /** @ngInject */
     function StudentController($log){
         var vm = this;
-        $log.debug('haha student')
+        $log.debug('landing student page')
     }
 
 }());
